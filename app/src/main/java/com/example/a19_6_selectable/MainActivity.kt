@@ -188,7 +188,7 @@ fun ResultsScreen(
     onRestart: () -> Unit
 ) {
     val score = correctAnswers.count { (question, correctSet) ->
-        correctSet.all { it in (answers[question] ?: emptySet()) }
+        correctSet == (answers[question] ?: emptySet<Int>())
     }
 
     Column(
@@ -206,6 +206,7 @@ fun ResultsScreen(
         }
     }
 }
+
 
 open class Option {
     data class TextOption(val text: String) : Option()
